@@ -8,6 +8,7 @@ function o = innercell(x)
 %   returns y as a full 4D double of size y(3,1,4,4)
 %   because size(t) = 1x3 and size t{1} = 4x4
 %
+%
 % - obviously each cell of the input should be the same size, although this
 % is dealt with by filling mismatched cells with the mean of the matrix in
 % cell{1,1} (but retaining sparsity and 0's).
