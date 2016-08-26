@@ -385,6 +385,7 @@ switch handles.D.info.P
         plot(p2,'ro'); hold off;
         
     case {'G','T','C','S','R'}
+        try
         x = x';
         p1 = squeeze(x(:,1));
         p2 = squeeze(x(:,2));
@@ -392,8 +393,17 @@ switch handles.D.info.P
         p1 = (mean(cat(3,p1{:}),3));
         p2 = (mean(cat(3,p2{:}),3));
         
+        % - new, for spectral x can be 3D:
+        catch
+            try p1 = squeeze(x(:,1,:));
+                p2 = squeeze(x(:,2,:));
+            catch; return; 
+            end
+        end
+        
         figure,
         l = D.info.nodes;
+        try
         switch handles.D.info.P
             case 'G'
             subplot(121),imagesc(p1);
@@ -412,6 +422,11 @@ switch handles.D.info.P
             subplot(121), bar(exp(p1));ylim([0 round(m*1.2)]);
             subplot(122), bar(exp(p2));ylim([0 round(m*1.2)]);
         end
+        catch
+            % new - just hand it to autoplotter!
+            try autoplot({p1, p2}); end
+        end
+        
     case {'M','N'};
     case 'J'
         
@@ -498,14 +513,6 @@ H = {...
 '4) Methods dropdown should be fairly automated.'...
 ' '... 
 '5) For parameter extraction: '...
-' '...
-' For non-trial specific parameters, try: '...
-' '...
-' -Select from dropdown, select param and press OK.'...
-' -Then click the Plot or Export button. '...
-' '...
-' For trial specific (B) parameters, try:'...
-' '...
 '-Select from dropdown, select param and press OK.'...
 '-Now go to dropdown, click MakeDouble'...
 '-Now go to dropdown and click MakeShrink'...
