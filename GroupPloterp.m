@@ -11,9 +11,12 @@ try D.Y; D.y; catch; D.GetY; end
 
 try       unit = D.t;    ut = 'time (ms)' ;
 end
-try   unit = D.Hz;   ut = 'Frequency (Hz)';
-catch unit = 1:nsamp;ut = 'samples' ;       
-end; 
+if ~isempty(D.Hz)
+    try   unit = D.Hz;   ut = 'Frequency (Hz)'; end
+end
+if isempty(unit)
+    unit = 1:nsamp;ut = 'samples' ;       
+end
 
 
 Q  = @squeeze;
