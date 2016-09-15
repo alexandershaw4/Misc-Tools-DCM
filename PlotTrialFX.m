@@ -1,5 +1,10 @@
 function PlotTrialFX(D,p)
-
+% D is dcmgrouptools object (see help dcm_hander)
+% p is 'B' (for beta matrix) - this could be updated for diff param
+%
+% Plot a figure for each group with nsubplots = nconditions
+%
+% AS
 
 try    X = (D.Dubble(D.GetP(p)));
 catch; return; 
