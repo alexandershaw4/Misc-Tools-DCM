@@ -71,6 +71,7 @@ classdef dcm_hander < handle
       x
       N
       norm
+      stats
       BinarySpace
       svm
       clasif
@@ -140,6 +141,12 @@ classdef dcm_hander < handle
       % get labels (nodes, models, functions etc)
                 L = GetLabels(obj.f{1,1});
                 obj.info = L;
+      end
+      
+      function S = DoStats(obj)
+      % run ttest or anova on a parameter
+                S = DStats(obj);
+                obj.stats = S;
       end
       
       function p = GetP(obj,P)

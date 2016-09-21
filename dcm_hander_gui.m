@@ -225,6 +225,8 @@ switch val
    %case 12; D.saveparams
    %case 13; x = D.Dubble;
     case 14; x = D.Shrink;
+    case 17; D.DoStats;
+             assignin('base','Stats',D.stats);
         
 end
 
