@@ -161,6 +161,7 @@ classdef dcm_hander < handle
                 end
                 
                 obj.p = p; % link
+                obj.info.P = P;
       end
       
       
