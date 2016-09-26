@@ -130,7 +130,12 @@ switch s
                         end
                         return
                         
-                    case 'S'
+                    case {'S','F'}
+                        switch P
+                            case 'F'; D.p = D.p'; 
+                        end;
+                            
+                        
                         [H,pval,~,T] = ttest2(D.p(:,1),D.p(:,2));
                         
                         stats.p = pval;
