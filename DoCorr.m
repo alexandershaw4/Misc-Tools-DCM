@@ -27,7 +27,7 @@ if c % if this parameter has condition speific values
     
 else
     switch p
-        case 'G'
+        case {'G','J'};
             for i = 1:size(X,2)
                 D.p = (squeeze(X(:,i,:,:,:)));
                 D.Shrink;
@@ -40,7 +40,7 @@ else
                 figure,corr_mat(D.p)
             end
     
-        case 'T'
+        case 'T';
             for i = 1:size(X,2)
                 D.p = (squeeze(X(:,i,:,:,:)));
                 D.Shrink;

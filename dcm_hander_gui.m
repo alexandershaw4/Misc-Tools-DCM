@@ -266,16 +266,22 @@ if val == 10 % normalise
 end
 
 if val == 11 % correlation matrix
+        
+        try fj = fieldnames(D.f{1}.Eg); end
+        try   nf = [f; fj]; 
+        catch nf = f;
+        end
+            
         [s,v] = listdlg('PromptString','Select param to correl:',...
                 'SelectionMode','single',...
-                'ListString',f);
+                'ListString',nf);
             if ~exist('s'); return; end
-        if strcmp(f{s},'B');   
+        if strcmp(nf{s},'B');   
             s2=inputdlg('Which number condition?','Type value');
             s2=str2num(s2{:})
-            D.CorMat(f{s},s2);
+            D.CorMat(nf{s},s2);
         else
-            D.CorMat(f{s});
+            D.CorMat(nf{s});
         end
 end
 
