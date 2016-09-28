@@ -240,8 +240,7 @@ classdef dcm_hander < handle
                             dims = 1:ndims(np);
                             
                             p  = permute(np,[dims(~ismember(dims,[1 2])) [1 2]]);
-                            
-                            
+          
                     end
                 end
                 
