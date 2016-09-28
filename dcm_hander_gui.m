@@ -1,7 +1,14 @@
 function varargout = dcm_hander_gui(varargin)
-% GUI for DCM objects created using dcm_hander. 
+% GUI for MEEG DCM objects created using dcm_hander. 
+%
 % This is a simple toolbox for extracting data (paramters, plots etc) from 
-% *GROUP DCM projects.
+% *GROUP* level MEEG DCM projects (ERP, SSR, CSD flavours).
+% 
+% - includes parameter extraction [inc. to matlab matrix or csv]
+% - includes autoplotting of data, predictions, parameters etc.
+% - includes group level stats for parameters
+% - includes BMS
+%
 % 
 % Usages:
 %
