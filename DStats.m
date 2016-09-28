@@ -73,7 +73,34 @@ switch s
                             try stats.names = D.info.nodes; end
                             try stats.conditions = D.info.conditions; end
                             return
-                            
+                    
+                    case 'Covar'
+                        for i = 1:size(D.p,3)
+                            for j = 1:size(D.p,4)
+                                clear X
+                                X{1} = Q(D.p(:,1,i,j));
+                                X{2} = Q(D.p(:,2,i,j));
+                                
+                                X = Q(innercell(X));
+                                [H,pval,~,T] = ttest2(X(1,:),X(2,:));
+                                
+                                O(i,j) = pval;
+                                h(i,j) = H;
+                                t(i,j) = T.tstat;
+                            end
+                        end
+                        
+                        stats.p = O;
+                        stats.H = h;
+                        stats.t = t;
+                        return;
+                                
+                        
+                        
+                        
+                        
+                        
+                        
                     case {'G','T','D','J'}; % not trial specific params
                         nd   = ndims(D.p);
                         ns   = size(D.p,nd);

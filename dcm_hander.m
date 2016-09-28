@@ -72,6 +72,7 @@ classdef dcm_hander < handle
       N
       norm
       stats
+      covar
       BinarySpace
       svm
       clasif
@@ -119,6 +120,11 @@ classdef dcm_hander < handle
       % do leave-one-out permutations on BMS
                 po = permuterBMS(obj);
                 obj.permBMS = po;
+      end
+      
+      function [C,Ca] = GetCov(obj)
+                [C,Ca]    = DCov(obj);
+                obj.covar = C;
       end
       
       function B = ModAct(obj)
