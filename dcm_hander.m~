@@ -232,16 +232,21 @@ classdef dcm_hander < handle
                         otherwise
                             p   = obj.p;
                             sp  = size(p);
-                            sp2 = size(p{1});
+                            sp2 = size(p{1})
                             dp  = spm_vec(p);
                             
                             np = reshape(dp,[sp2 sp]);
                             
                             dims = 1:ndims(np);
                             
-                            p  = permute(np,[dims(~ismember(dims,[1 2])) [1 2]]);
+                            test  = permute(np,[[1 2] dims(dims~=[1 2])]);
                             
                             
+                            
+                            
+                            %p  = innercell(obj.p');
+                            %nd = ndims(p);
+                            %dp = permute(p);
                     end
                 end
                 

@@ -112,8 +112,8 @@ switch s
                                 X{1} = Q(D.p(:,1,prm,node));
                                 X{2} = Q(D.p(:,2,prm,node));
                             
-                                X = squeeze(innercell(X));
-                                [H,pval,~,T] = ttest2(X(1,:),X(2,:));
+                                %X = squeeze(innercell(X));
+                                [H,pval,~,T] = ttest2(X{1},X{2});
                                 
                                 O(prm,node) = pval';
                                 h(prm,node) = H';

@@ -393,6 +393,9 @@ switch handles.D.info.P
     case {'B','A','D'}
         autoplot(x{1,:});
         autoplot(x{2,:});
+    case 'Covar'
+        autoplot(mean(x(:,1,:,:),1));
+        autoplot(mean(x(:,2,:,:),1));
         
     case {'F'}
         x = x';
