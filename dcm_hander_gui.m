@@ -460,6 +460,9 @@ switch handles.D.info.P
         M = max(max([p1; p2]));
         subplot(121),bar(p1);ylim([0 M*1.1]);
         subplot(122),bar(p2);ylim([0 M*1.1]);
+        
+    otherwise
+        figure,autoplot(x);
 end
         
 
