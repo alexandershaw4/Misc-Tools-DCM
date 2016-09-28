@@ -234,6 +234,8 @@ switch val
     case 14; x = D.Shrink;
     case 17; D.DoStats;
              assignin('base','Stats',D.stats);
+    case 18; D.GetCov;
+            
         
 end
 

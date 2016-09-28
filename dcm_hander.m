@@ -1,6 +1,6 @@
 classdef dcm_hander < handle
-    % Methods & handling of groups of DCMs. Essentially a class wrapper 
-    % around some functions.
+    % Methods & handling of groups of DCMs. 
+    % Essentially a class wrapper around some functions.
     %
     % NEW: Now has gui ! Do: dcm_hander_gui
     %
