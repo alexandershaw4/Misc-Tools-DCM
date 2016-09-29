@@ -75,12 +75,15 @@ switch s
                             return
                     
                     case 'Covar'
+                        h1 = waitbar(0, 'Runnning t-tests...')
+                        n = 0;
                         for i = 1:size(D.p,3)
                             for j = 1:size(D.p,4)
                                 clear X
                                 X{1} = Q(D.p(:,1,i,j));
                                 X{2} = Q(D.p(:,2,i,j));
-                                
+                                n = n + 1;
+                                waitbar(n/(size(D.p,3)*size(D.p,4)));
                                 X = Q(innercell(X));
                                 [H,pval,~,T] = ttest2(X(1,:),X(2,:));
                                 
@@ -89,7 +92,7 @@ switch s
                                 t(i,j) = T.tstat;
                             end
                         end
-                        
+                        close(h1);
                         stats.p = O;
                         stats.H = h;
                         stats.t = t;
