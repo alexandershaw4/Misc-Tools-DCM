@@ -239,29 +239,25 @@ switch s
                         
                         v1 = repmat([1:nc]'-1,[nc,1]);
                         
-                        for k = 1:ng
-                            v2(:,k) = repmat(k-1,[ng,1]);
+                        for i = 1:ng
+                            v2(:,i) = repmat(i-1,[ng,1]);
                         end
-                              
-                        clear v
-                        v{1} = repmat(v2(:),[nsb,1]); % group
-                        v{2} = repmat(v1   ,[nsb,1]); % condition
                         
-                        [p,tbl] = anovan(spm_vec(X),v,'varnames',{'group','condition'});
-                        close figure 1
+                        %v12 = [v2(:) v1];
                         
-                        pval{i,j} = p;
-                        stat{i,j} = tbl;
+                        v{1} = repmat(v2(:),[nsb,1]);
+                        v{2} 
                         
                         
+                        %for g = 1:ng
+                        %    X{g} = {Q(D.p(:,g,:,:,i,j))};
+                        %end
+                                
+                            
+                
+                
                     end
                 end
-                stats   = [];
-                stats.p = pval;
-                stats.stat = stat;
-                stats.P  = cellreshapetomat(pval);
-                
-                return;
             
         end
         
