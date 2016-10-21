@@ -41,18 +41,35 @@ return
 
 % SSR / CSDs
 
-elseif isfield(in{1,1}.xY,'Hz')
+elseif isfield(in{1,1}.xY,'Hz') 
     
 for i = 1:size(in,1)
     for j = 1:size(in,2)
         for k = 1:length(in{1,1}.xY.y)
             
-            Y (i,j,k,:) = mean(in{i,j}.xY.y{k},2);
-            nt(i,j,k,:) = in{i,j}.xY.nt(k);       
-      try   y (i,j,k,:) = mean(in{i,j}.Hc{k},2); 
-      catch y = [];
-      end
-      try   t           = in{i,j}.xY.pst;  end
+            if ndims(in{i,j}.xY.y{k}) == 2 % ssr
+            
+                    Y (i,j,k,:) = mean(in{i,j}.xY.y{k},2);
+                    nt(i,j,k,:) = in{i,j}.xY.nt(k);       
+              try   y (i,j,k,:) = mean(in{i,j}.Hc{k},2); 
+              catch y = [];
+              end
+              try   t           = in{i,j}.xY.pst;  end
+              
+            elseif ndims(in{i,j}.xY.y{k}) == 3 % csd
+                
+                    Y (i,j,k,:,:,:) = in{i,j}.xY.y{k};
+              try   nt(i,j,k,:) = in{i,j}.xY.nt(k);  
+              catch nt = [];
+              end
+              try   y (i,j,k,:,:,:) = in{i,j}.Hc{k};
+              catch y = [];
+              end
+              try   t           = in{i,j}.xY.pst;  end 
+                
+                
+                
+            end
 
         end
     end
@@ -67,5 +84,7 @@ if nargout == 5
     catch varargout{2} = t; 
     end
 end
+
+
 
 end
