@@ -7,6 +7,8 @@ function GroupPloterp(D)
 
 try D.Y; D.y; catch; D.GetY; end
 
+try D.info.type == 'CSD'; return; end
+
 [ng,nsub,nc,nsamp] = size(D.Y);
 
 try       unit = D.t;    ut = 'time (ms)' ;

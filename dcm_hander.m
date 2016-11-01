@@ -94,14 +94,34 @@ classdef dcm_hander < handle
                 obj.f = f;
       end
       
+      function t = modtype(obj)
+                y = obj.f{1}.xY.y{1};
+                if ndims(y) == 3 && size(y,2)==size(y,3)
+                    obj.info.type = 'CSD';
+                    t = 'CSD';
+                else
+                    obj.info.type = 'erp';
+                    t = 'erp';
+                end
+                
+      end
+      
        
       function plotmean(obj)
       % average datasets and plot model + prediction ERPs
                 try obj.f; catch obj.f = loader(D); end
-                for i = 1:size(obj.f,1)
-                    figure,ploterp(obj.f(i,:));
+                try obj.info.type; catch obj.modtype; end
+                
+                switch obj.info.type
+                    case 'ERP'
+                        for i = 1:size(obj.f,1)
+                            figure,ploterp(obj.f(i,:));
+                        end
+                    case 'CSD'
+                        for i = 1:size(obj.f,1)
+                            plotcsd(obj.f(i,:));
+                        end
                 end
-
       end
       
       function plotgroup(obj)

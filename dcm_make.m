@@ -40,7 +40,7 @@ D   = dcm_hander;
 D.a = F;
 
 % execute
-D.loader; D.GetF; D.Names; D.GetY; D.ModAct; D.GetInfo; D.GetX;
+D.loader; D.modtype; D.GetF; D.Names; D.GetY; D.ModAct; D.GetInfo; D.GetX;
 
 return;
 
