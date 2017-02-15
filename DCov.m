@@ -1,6 +1,6 @@
 function [C,Ca] = DCov(D)
 
-try D.f{1,1}; catch try D.loader; catch; return; end; end
+try D.f{1,1}; catch try D.loader; catch;try d=D;D=dcm_hander;D.a=d;[C,Ca]=DCov(D); return;;end;return; end; end
 
 for i = 1:size(D.f,1)
     for j = 1:size(D.f,2)
