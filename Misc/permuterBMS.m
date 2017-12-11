@@ -14,7 +14,7 @@ try D.a; catch error('please set up D.a using dcm_make.m'); return; end
 
 np  = 1e3;     % n perms
 nm  = 21;      % n mods
-npg = ns / nm; % num subs per group
+npg = floor(ns / nm); % num subs per group
 
 
 % sort input list around model number so that D.a(1,:) == all subs model 1
@@ -43,7 +43,7 @@ D.a(2,:) = D.a(2,I);
 
 % now do the leave-one-out and recalc BMS:
 for i = 1:np
-    
+    fprintf('Permutation %d of %d\n',i,np);
     excld = randi(npg); % identify subject to kill
     for j = 1:nm        % find all instances and kill
         if j == 1; Eadd = excld;

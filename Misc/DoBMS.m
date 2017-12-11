@@ -19,8 +19,7 @@ end
 
 
 fI = d;
-
-n = 0;
+n  = 0;
 for j = 1:size(ID,2)
     for i = 1:size(ID,1)
         n = n + 1;

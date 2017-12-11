@@ -178,7 +178,7 @@ switch s
                         
                         
                         
-                    case 'A' % this is specific to the cmc i think
+                    case {'A'} % this is specific to the cmc i think
                         nd   = ndims(D.p);
                         ns   = size(D.p,nd);     % n sources
                         ncon = size(D.p,(nd-2)); % n connections

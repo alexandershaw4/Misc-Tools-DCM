@@ -7,9 +7,12 @@ if iscell(DCM)
     end
     y = permute(y,[1 5 2 3 4]);
     m = permute(m,[1 5 2 3 4]);
-end
     y = squeeze(mean(y,1)); % mean over subs
     m = squeeze(mean(m,1));
+
+
+end
+
     
 nc = size(y,1); % conditions
 nf = size(y,2); % freqs
