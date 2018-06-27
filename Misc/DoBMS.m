@@ -6,6 +6,7 @@ function o = DoBMS(d)
 %    Sub1_blahblah_Mod_1_blah.mat
 %    Sub1_blahx_Mod_2_anything.mat
 %
+% [FFX only]
 % AS2016
 
 for i = 1:size(d,1)

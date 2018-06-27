@@ -1,4 +1,4 @@
-function po = permuterBMS(D)
+function [po,ex] = permuterBMS(D)
 % do BMS with leave-one-out permutations
 %
 % input D is a dcm object created with dcm_make or a structure with field
@@ -42,22 +42,37 @@ end
 D.a(2,:) = D.a(2,I);
 
 % now do the leave-one-out and recalc BMS:
+% for i = 1:np
+%     fprintf('Permutation %d of %d\n',i,np);
+%     excld = randi(npg); % identify subject to kill
+%     for j = 1:nm        % find all instances and kill
+%         if j == 1; Eadd = excld;
+%         else       Eadd = Eadd + npg;
+%         end
+%         E(j) = Eadd;
+%     end
+%     
+%     f    = D.a(:,~ismember(1:ns,E));
+%     o(i) = DoBMS(f); close;
+%     
+%     
+% end
 for i = 1:np
     fprintf('Permutation %d of %d\n',i,np);
-    excld = randi(npg); % identify subject to kill
-    for j = 1:nm        % find all instances and kill
-        if j == 1; Eadd = excld;
-        else       Eadd = Eadd + npg;
-        end
-        E(j) = Eadd;
-    end
-    
+    excld = randi(ns); % identify subject to kill
+%     for j = 1:nm        % find all instances and kill
+%         if j == 1; Eadd = excld;
+%         else       Eadd = Eadd + npg;
+%         end
+%         E(j) = Eadd;
+%     end
+    E    = excld;
     f    = D.a(:,~ismember(1:ns,E));
     o(i) = DoBMS(f); close;
+    ex(i) = E;
     
-    
-end
-    
+end   
+
 po = o; return;
 
 

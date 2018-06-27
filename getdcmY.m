@@ -50,7 +50,7 @@ for i = 1:size(in,1)
             if ndims(in{i,j}.xY.y{k}) == 2 % ssr
             
                     Y (i,j,k,:) = mean(in{i,j}.xY.y{k},2);
-                    nt(i,j,k,:) = in{i,j}.xY.nt(k);       
+              try   nt(i,j,k,:) = in{i,j}.xY.nt(k);  end     
               try   y (i,j,k,:) = mean(in{i,j}.Hc{k},2); 
               catch y = [];
               end
